@@ -10,6 +10,7 @@ public class LoginBD : MonoBehaviour
     public TMP_InputField pass;
     public GameObject currentScreen;
     public GameObject nextScreen;
+    public GameObject buttons;
     public TextMeshProUGUI textNotice;
     string notice;
 
@@ -53,6 +54,7 @@ public class LoginBD : MonoBehaviour
         {
             currentScreen.SetActive(false);
             nextScreen.SetActive(true);
+            buttons.SetActive(false);
         }
         else if (notice == "incorrecto")
         {
@@ -63,7 +65,6 @@ public class LoginBD : MonoBehaviour
             textNotice.text = notice;
         }
         yield return new WaitForSeconds(3);
-        print("out");
         textNotice.text = "";
     }
 }

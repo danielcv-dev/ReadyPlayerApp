@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Networking;
 using TMPro;
 
+
 public class RegistroBD : MonoBehaviour
 {
 
@@ -12,6 +13,9 @@ public class RegistroBD : MonoBehaviour
     public TMP_InputField rPass;
     public TMP_InputField email;
     public TextMeshProUGUI textNotice;
+    public GameObject currentScreen;
+    public GameObject nextScreen;
+    public GameObject buttons;
     string notice;
     
 
@@ -72,6 +76,9 @@ public class RegistroBD : MonoBehaviour
         if (notice == "completo")
         {
             textNotice.text = "correcto";
+            currentScreen.SetActive(false);
+            nextScreen.SetActive(true);
+            buttons.SetActive(false);
         }
         if (notice == "existe")
         {
@@ -82,7 +89,6 @@ public class RegistroBD : MonoBehaviour
             textNotice.text = notice;
         }
         yield return new WaitForSeconds(3);
-        print("out");
         textNotice.text = "";
     }
 
