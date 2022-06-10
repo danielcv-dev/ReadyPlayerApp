@@ -18,6 +18,7 @@ public class RegistroBD : MonoBehaviour
     public GameObject buttons;
     string notice;
     
+    
 
     // Start is called before the first frame update
     void Start()

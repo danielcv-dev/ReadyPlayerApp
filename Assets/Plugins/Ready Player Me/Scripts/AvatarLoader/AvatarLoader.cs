@@ -13,6 +13,7 @@ namespace ReadyPlayerMe
     {
         // Avatar download timeout
         public int Timeout { get; set; } = 20;
+        
 
         /// <summary>
         ///     Load Avatar GameObject from given GLB url.
@@ -55,6 +56,7 @@ namespace ReadyPlayerMe
             // Download avatar model into memory and cache bytes
             protected override IEnumerator DownloadAvatar(AvatarUri uri)
             {
+                
                 if (Application.internetReachability == NetworkReachability.NotReachable)
                 {
                     Debug.LogError("AvatarLoader.LoadAvatarAsync: Please check your internet connection.");

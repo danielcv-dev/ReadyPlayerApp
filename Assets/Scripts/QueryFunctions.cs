@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using ReadyPlayerMe;
 
+
 public class QueryFunctions : MonoBehaviour
 {
     public WebViewTest webView;
@@ -18,4 +19,6 @@ public class QueryFunctions : MonoBehaviour
     {
         webView.DisplayWebView();
     }
+
+    
 }

@@ -17,7 +17,10 @@ public class LoginBD : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (PlayerPrefs.GetString("user") != null)
+        {
+            user.text = PlayerPrefs.GetString("user");
+        }
     }
 
     public IEnumerator DatosPost()
@@ -44,6 +47,7 @@ public class LoginBD : MonoBehaviour
         {
             Debug.Log(www.downloadHandler.text);
             notice = www.downloadHandler.text;
+            PlayerPrefs.SetString("user", userString);
         }
         StartCoroutine(NextScreen());
     }

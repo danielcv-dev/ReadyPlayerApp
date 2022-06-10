@@ -2,6 +2,9 @@ using System;
 using UnityEngine;
 using Newtonsoft.Json;
 using System.Collections.Generic;
+using System.Collections;
+using UnityEngine.Networking;
+using UnityEngine.UI;
 
 public class WebView: MonoBehaviour
 {
@@ -18,7 +21,7 @@ public class WebView: MonoBehaviour
     [SerializeField] private int top;
     [SerializeField] private int right;
     [SerializeField] private int bottom;
-      
+
     public bool Loaded { get; private set; }
     
     // Event to call when avatar is created, receives GLB url.
@@ -117,6 +120,8 @@ public class WebView: MonoBehaviour
                 {
                     webViewObject.IsVisible = false;
                     OnAvatarCreated?.Invoke(avatarUrl);
+                    QueryFunctions qf = new QueryFunctions();
+                    StartCoroutine(qf.DatosPost(avatarUrl));
                 }
             }
         }
@@ -209,4 +214,34 @@ public struct WebMessage
     public string source;
     public string eventName;
     public Dictionary<string, string> data;
+}
+
+public class QueryFunctions : MonoBehaviour
+{
+
+    public IEnumerator DatosPost(string _urlAvatar)
+    {
+        Debug.Log("entro");
+        string urlAvatar = _urlAvatar;
+        string userString = PlayerPrefs.GetString("user");
+
+
+        string uri = "https://metaxsp.com/pentagrama/url.php";
+        WWWForm form = new WWWForm();
+        form.AddField("user", userString);
+        form.AddField("url", urlAvatar);
+
+
+        UnityWebRequest www = UnityWebRequest.Post(uri, form);
+
+        yield return www.SendWebRequest();
+        if (www.isHttpError || www.isNetworkError)
+        {
+            Debug.Log(www.error);
+        }
+        else
+        {
+            Debug.Log(www.downloadHandler.text);
+        }
+    }
 }

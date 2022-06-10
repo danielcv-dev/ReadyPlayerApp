@@ -1,5 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using ReadyPlayerMe;
+using System.Collections;
+using UnityEngine.Networking;
 
 namespace ReadyPlayerMe
 {
@@ -12,7 +15,9 @@ namespace ReadyPlayerMe
         [SerializeField] private Button displayButton = null;
         [SerializeField] private Button closeButton = null;
 
-        private void Start()
+
+
+        public void Start()
         {
            // displayButton.onClick.AddListener(DisplayWebView);
             //closeButton.onClick.AddListener(HideWebView);
@@ -50,7 +55,7 @@ namespace ReadyPlayerMe
         private void OnAvatarCreated(string url)
         {
             if (avatar) Destroy(avatar);
-
+            
             webView.SetVisible(false);
             loadingLabel.SetActive(true);
             displayButton.gameObject.SetActive(false);
@@ -58,6 +63,7 @@ namespace ReadyPlayerMe
 
             AvatarLoader avatarLoader = new AvatarLoader();
             avatarLoader.LoadAvatar(url, null, OnAvatarImported);
+            
         }
 
         // AvatarLoader callback for retrieving loaded avatar game object
@@ -68,6 +74,7 @@ namespace ReadyPlayerMe
             displayButton.gameObject.SetActive(true);
 
             Debug.Log("Loaded");
+            
         }
 
         private void Destroy()
@@ -77,3 +84,5 @@ namespace ReadyPlayerMe
         }
     }
 }
+
+
