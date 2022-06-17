@@ -68,6 +68,7 @@ public class RegistroBD : MonoBehaviour
         {
             Debug.Log(www.downloadHandler.text);
             notice = www.downloadHandler.text;
+            PlayerPrefs.SetString("user", userString);
         }
         StartCoroutine(NextScreen());
     }
