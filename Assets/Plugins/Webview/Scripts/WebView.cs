@@ -226,7 +226,7 @@ public class QueryFunctions : MonoBehaviour
         string userString = PlayerPrefs.GetString("user");
 
 
-        string uri = "https://metaxsp.com/pentagrama/url.php";
+        string uri = "https://pentagrama.io/CellApp/url.php";
         WWWForm form = new WWWForm();
         form.AddField("user", userString);
         form.AddField("url", urlAvatar);

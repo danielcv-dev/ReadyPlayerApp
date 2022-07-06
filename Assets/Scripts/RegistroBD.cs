@@ -50,7 +50,7 @@ public class RegistroBD : MonoBehaviour
         string passString = pass.text;
         string emailString = email.text;
 
-        string uri = "https://metaxsp.com/pentagrama/registro.php";
+        string uri = "https://pentagrama.io/CellApp/registro.php";
         WWWForm form = new WWWForm();
         form.AddField("user", userString);
         form.AddField("password", passString);

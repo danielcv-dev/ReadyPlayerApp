@@ -29,7 +29,7 @@ public class LoginBD : MonoBehaviour
         string userString = user.text;
         string passString = pass.text;
 
-        string uri = "https://metaxsp.com/pentagrama/login.php";
+        string uri = "https://pentagrama.io/CellApp/login.php";
         WWWForm form = new WWWForm();
         form.AddField("user", userString);
         form.AddField("password", passString);
